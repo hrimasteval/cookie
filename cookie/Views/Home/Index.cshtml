@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Welcome</h2>
+
+@if (ViewBag.UserName != null)
+{
+    <p>Hello, @ViewBag.UserName!</p>
+}
+else
+{
+    <form asp-action="SetUserName" method="post">
+        <label for="userName">Enter name:</label>
+        <input type="text" id="userName" name="userName" required />
+        <button type="submit">Save</button>
+    </form>
+}
+
+<h2>Select preferred theme:</h2>
+
+<form asp-action="SetCookie" method="post">
+    <button type="submit" name="preference" value="Dark Mode">Dark</button>
+    <button type="submit" name="preference" value="Light Mode">Light</button>
+</form>
+
+<p>Your theme: @ViewBag.UserPreference</p>
